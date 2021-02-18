@@ -19,6 +19,8 @@
 
 			if (id) {
 				this.table.id = id;
+			} else {
+				throw "error: ID is required for Board class!";
 			}
 
 			for (var i = 0; i < this.rows.length; i++) {
@@ -26,10 +28,14 @@
 				row.id = this.rows[i];
 				for (var j = 0; j < this.cols.length; j++) {
 					var cell = row.insertCell(j);
-					cell.id = this.cols[j] + this.rows[i];
+					cell.id = id + "_" + this.cols[j] + this.rows[i];
 				}
 			}
 			document.body.appendChild(this.table)
+		}
+
+		getCell(id) {
+			return document.getElementById(this.table.id + "_" + id);
 		}
 	}
 
